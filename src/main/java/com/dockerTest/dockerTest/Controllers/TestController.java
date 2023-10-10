@@ -1,12 +1,17 @@
 package com.dockerTest.dockerTest.Controllers;
 
 
+import com.dockerTest.dockerTest.Entities.Test;
+import com.dockerTest.dockerTest.Services.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /*Testing Controller for ensure correctly working */
 
 @RestController
 public class TestController {
+    @Autowired
+    TestService testService;
 
     @GetMapping("/test/get")
     public String simpleGetTest() {
@@ -24,8 +29,9 @@ public class TestController {
     }
 
     @PostMapping("/test/post")
-    public String postTest (@RequestBody String entryTest){
-        return "postRequestBodyTest : " + entryTest;
+    public String postTest (@RequestBody Test entryTest){
+
+        return "postRequestBodyTest : " + testService.save(entryTest);
     }
 
 }
