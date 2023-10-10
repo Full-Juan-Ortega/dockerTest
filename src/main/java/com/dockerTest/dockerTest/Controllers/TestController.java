@@ -31,7 +31,7 @@ public class TestController {
     @PostMapping("/test/post")
     public String postTest (@RequestBody Test entryTest){
 
-        return "postRequestBodyTest : " + testService.save(entryTest);
+        return "postRequestBodyTests : " + testService.save(entryTest);
     }
 
 }
